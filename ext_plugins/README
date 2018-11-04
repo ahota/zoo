@@ -1,0 +1,11 @@
+This folder is someone else writing plugins
+They should be compiled and then copied over to build/plugins
+
+This is to test if the update thread can capture new plugins, and if the
+zookeeper thread can run the functions within them
+
+make an object:
+g++ -I ~/playground/cpp_plugin/include -fPIC -c src/<name>.cpp -o <name>.o
+
+then make a shared object:
+g++ -shared -o plugins/lib<name>.so <name>.o
