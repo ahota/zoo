@@ -1,5 +1,17 @@
 Basic implementation of plugin architecture in C++
 
+- plugins comply with a basic API:
+  - libname.so should expose createName and destroyName
+  - these should return a pointer to a `new` Name and destroy an existing
+    Name object, respectively
+  - Names should also implement makeSound
+- plugins can be added to the designated plugin directory while zoo is
+  running
+- plugins can be picked up and run on the fly if added
+
+Ultimately, this forms the basic premise for plugin-based implementation of
+workflow nodes
+
 .
 ├── build
 │   └── plugins               directory for installed plugins
