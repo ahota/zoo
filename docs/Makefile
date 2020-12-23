@@ -1,13 +1,12 @@
-%.md:
-	pandoc *.md -o $@
+.PHONY: all index.md ../README.md
 
-.PHONY: all readme clean
+all: ../README.md
 
-readme: ../README.md
+index.md:
+	pandoc -f gfm -t gfm -o $@ 0*_*.md
 
-gh-pages: index.md
-
-all: readme gh-pages
+../README.md: index.md
+	cp $< $@
 
 clean:
-	rm *.html
+	rm index.md ../README.md

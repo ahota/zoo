@@ -1,5 +1,4 @@
-zoo
-===
+# zoo
 
 zoo is a basic implementation of a plugin architecture in C++. I had
 originally created this for a segment of my dissertation work that I
@@ -10,30 +9,28 @@ APIs.
 *Logo from [photo by Waldemar Brandt from
 Pexels](https://www.pexels.com/@wb2008?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)*
 
-zoo overview
-------------
+## zoo overview
 
 Plugins must comply with a basic API:
 
--   A plugin called `name` must expose `createName` and `destroyName`
--   `createName` must return a pointer to a `new`'d `Name` held by the
+  - A plugin called `name` must expose `createName` and `destroyName`
+  - `createName` must return a pointer to a `new`'d `Name` held by the
     plugin
-    -   Using a `shared_ptr` instead would be more C++
--   `destroyName` must destroy an existing `Name` object
--   `Name` objects must implement `makeSound` -- they are zoo animals
+      - Using a `shared_ptr` instead would be more C++
+  - `destroyName` must destroy an existing `Name` object
+  - `Name` objects must implement `makeSound` -- they are zoo animals
     after all
 
 Plugins may be added to the designated plugins directory at any time,
 even while `zoo` is running. If added, plugins will be picked up and
 started on the fly.
 
-building zoo
-------------
+## building zoo
 
 zoo uses the typical CMake build process. I have only tested it with GCC
 5.4 and Clang 11.0, but it should work with any modern C++ compiler.
 
-``` {.bash}
+``` bash
 mkdir build
 cd build
 cmake ..
@@ -41,8 +38,7 @@ make
 ./zoo
 ```
 
-zoo directory layout
---------------------
+## zoo directory layout
 
 Below is an example directory layout describing how each directory is
 designed to be used in the plugin architecture.
