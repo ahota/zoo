@@ -7,6 +7,9 @@ later dropped for being out of scope. Regardless, it was a valuable
 exercise in understanding loading and using symbols and creating generic
 APIs.
 
+*Logo from [photo by Waldemar Brandt from
+Pexels](https://www.pexels.com/@wb2008?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)*
+
 zoo overview
 ------------
 
