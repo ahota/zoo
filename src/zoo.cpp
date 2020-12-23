@@ -71,7 +71,13 @@ void updateLibs(std::atomic<bool> &running, unsigned int update_s)
     while(running) {
         std::cout << "Checking for new libs" << std::endl;
 
-        std::vector<std::string> filenames = globothy("plugins/*.so");
+#if __APPLE__
+        const std::string libGlob("plugins/*.dylib");
+#else
+        const std::string libGlob("plugins/*.so");
+#endif
+
+        std::vector<std::string> filenames = globothy(libGlob);
 
         size_t before = libNames.size();
         libLock.lock(); // get locked, boi ------------------------------//
@@ -110,8 +116,8 @@ int main(int argc, char *argv[])
 {
     installSignalHandler();
 
-    std::thread updateThread(updateLibs, std::ref(zooOpen), 60);
-    std::thread zooThread(zookeeper, std::ref(zooOpen), 60);
+    std::thread updateThread(updateLibs, std::ref(zooOpen), 5);
+    std::thread zooThread(zookeeper, std::ref(zooOpen), 5);
 
     const auto naptime = std::chrono::milliseconds(100);
     while(zooOpen) {
